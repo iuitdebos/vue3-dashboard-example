@@ -1,4 +1,4 @@
-# vue3-dashboard-example
+# vue3
 
 ## Project setup
 ```

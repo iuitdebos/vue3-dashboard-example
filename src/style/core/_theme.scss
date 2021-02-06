@@ -1,0 +1,26 @@
+@mixin theme($var, $light, $dark) {
+  body {
+    #{$var}: #{$light};
+  }
+  body.dark-theme {
+    #{$var}: #{$dark};
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    body {
+      #{$var}: #{$dark};
+    }
+    body.light-theme {
+      #{$var}: #{$light};
+    }
+  }
+
+  // Force for non-body elements overrides
+  .light-theme {
+    #{$var}: #{$light};
+  }
+
+  .dark-theme {
+    #{$var}: #{$dark};
+  }
+}

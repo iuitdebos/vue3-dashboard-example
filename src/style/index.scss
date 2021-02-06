@@ -1,2 +1,10 @@
+@import './core/normalize';
+@import './core/settings';
+@import './core/svg';
+@import './core/colors';
+@import './core/typography';
+@import './core/theme';
 
-@import './colors';
+html {
+  background: red;
+}

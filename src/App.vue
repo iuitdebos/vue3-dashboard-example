@@ -8,25 +8,28 @@
   </div>
 </template>
 
+<script>
+import { onMounted, onUnmounted } from 'vue';
+
+export default {
+  name: 'App',
+  setup: () => {
+    onMounted(() => {
+      document.body.classList.add('dark-theme');
+    });
+    onUnmounted(() => {
+      document.body.classList.remove('dark-theme');
+    });
+  },
+};
+</script>
+
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  border: 4px solid green;
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  .home {
+    border: 4px solid blue;
+  }
 }
 </style>
