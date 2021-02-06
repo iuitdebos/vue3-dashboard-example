@@ -890,6 +890,18 @@
   resolved "https://registry.npm.taobao.org/@nodelib/fs.stat/download/@nodelib/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha1-K1o6s/kYzKSKjHVMCBaOPwPrphs=
 
+"@revolist/revogrid@^2.9.3":
+  version "2.9.3"
+  resolved "https://registry.yarnpkg.com/@revolist/revogrid/-/revogrid-2.9.3.tgz#e40ca13d3f1fe072d1cf82999fd49670035f47cb"
+  integrity sha512-Gbj8ZhHkbhQ6SYfKE/rmyviKq2qRL5qN0CFfA7Ze1DfBAkuCj7MQ/T2x+9t8aoMpFtt1vBDjtqp8b+t4/S5+PQ==
+
+"@revolist/vue3-datagrid@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@revolist/vue3-datagrid/-/vue3-datagrid-1.0.2.tgz#02fe540e17ccf0e54c833296a63024b32a6d1989"
+  integrity sha512-oEAPdNVwHkAWJ+nC1ddf2xfCFxP6D3fLMUNUWJZ4O88LBs4E9Okc8wHpJ8JJF49F3fSDQubsnJWK7pZIyWHFag==
+  dependencies:
+    "@revolist/revogrid" "^2.9.3"
+
 "@soda/friendly-errors-webpack-plugin@^1.7.1":
   version "1.8.0"
   resolved "https://registry.npm.taobao.org/@soda/friendly-errors-webpack-plugin/download/@soda/friendly-errors-webpack-plugin-1.8.0.tgz?cache=0&sync_timestamp=1607927625608&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40soda%2Ffriendly-errors-webpack-plugin%2Fdownload%2F%40soda%2Ffriendly-errors-webpack-plugin-1.8.0.tgz#84751d82a93019d5c92c0cf0e45ac59087cd2240"

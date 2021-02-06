@@ -1,20 +1,27 @@
 <template>
   <div class="sidebar-nav">
     <router-link to="/" class='nav-link'>
-      <span class='nav'>Home</span>
+      <span class='nav'>Dashboard</span>
     </router-link>
 
-    <router-link to="/about" class='nav-link'>
-      <span class='nav'>About</span>
-    </router-link>
+    <span
+      class='clickable'
+      @click='toggleTheme'>
+      {{ theme }}
+    </span>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import useTheme from '@/composables/useTheme';
 
 export default defineComponent({
   name: 'SidebarNav',
+  setup() {
+    const theme = useTheme();
+    return { ...theme };
+  },
 });
 </script>
 
@@ -22,6 +29,7 @@ export default defineComponent({
   .sidebar-nav {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .nav-link {
@@ -38,7 +46,7 @@ export default defineComponent({
         width: 100%;
         height: 1px;
         opacity: 0.4;
-        @include theme(background-color, color(tertiary, -3), color(quaternary, 2));
+        background-color: color(background);
       }
     }
   }

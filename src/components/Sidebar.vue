@@ -9,18 +9,13 @@
     </div>
 
     <div class='sidebar__section sidebar__section--bottom'>
-      <span
-        class='clickable'
-        @click='toggleTheme'>
-        {{ theme }}
-      </span>
+      Vue 3 Dashboard
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import useTheme from '@/composables/useTheme';
 
 import SidebarNav from '@/components/SidebarNav.vue';
 
@@ -28,10 +23,6 @@ export default defineComponent({
   name: 'Sidebar',
   components: {
     SidebarNav,
-  },
-  setup() {
-    const theme = useTheme();
-    return { ...theme };
   },
 });
 </script>
@@ -43,8 +34,8 @@ export default defineComponent({
     align-items: center;
     justify-content: space-between;
     width: 200px;
-    color: color(text);
     background-color: color(background);
+    box-shadow: shadow();
   }
 
   .sidebar__logo {

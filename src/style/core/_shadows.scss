@@ -1,0 +1,9 @@
+@function shadow($strength: '') {
+  @return 0 3px 7px -1px var(--shadow#{capitalize($strength)});
+}
+
+#app {
+  @include theme(--shadow, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.15));
+  @include theme(--shadowStrong, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25));
+  @include theme(--shadowSoft, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.1));
+}

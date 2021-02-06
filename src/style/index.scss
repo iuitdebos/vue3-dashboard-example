@@ -5,8 +5,9 @@
 @import './core/animations';
 @import './core/svg';
 @import './core/colors';
-@import './core/typography';
 @import './core/theme';
+@import './core/shadows';
+@import './core/typography';
 
 html { box-sizing: border-box; }
 *, *::before, *::after {
@@ -26,3 +27,22 @@ a {
 .clickable {
   cursor: pointer;
 }
+
+// Scrollbar customization
+$scrollbarRadius: 8px;
+#app {
+  @include theme(--scrollbar, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.05));
+  @include theme(--scrollbarThumb, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-radius: $scrollbarRadius;
+  background: var(--scrollbar);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbarThumb);
+  border-radius: $scrollbarRadius;
+}
+ 
