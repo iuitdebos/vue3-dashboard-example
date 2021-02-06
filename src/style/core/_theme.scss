@@ -1,3 +1,7 @@
+/* Usage
+@include theme(background-color, color(primary), color(secondary));
+*/
+
 @mixin theme($var, $light, $dark: '', $root: '') {
   @if ($dark == '') {
     $dark: $light;
@@ -21,4 +25,9 @@
   #{$root}.dark-theme & {
     #{$var}: $dark;
   }
+}
+
+#app {
+  @include theme(--colorText, color(tertiary, -3), color(quaternary, 2));
+  @include theme(--colorBackground, color(quaternary, 2), color(tertiary, -3));
 }

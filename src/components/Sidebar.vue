@@ -5,22 +5,40 @@
     </div>
 
     <div class='sidebar__section'>
-      <div id="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
-      </div>
+      <SidebarNav />
     </div>
 
-    <div class='sidebar__section'>
+    <div class='sidebar__section sidebar__section--bottom'>
+      <span
+        class='clickable'
+        @click='toggleTheme'>
+        {{ theme }}
+      </span>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
+import { useStore } from '@/store';
+
+import SidebarNav from '@/components/SidebarNav.vue';
 
 export default defineComponent({
   name: 'Sidebar',
+  components: {
+    SidebarNav,
+  },
+  setup() {
+    const store = useStore();
+    const theme = computed(() => store.state.App.theme);
+    const toggleTheme = () => {
+      const newTheme = theme.value === 'light' ? 'dark' : 'light';
+      store.commit('App/setTheme', newTheme);
+    };
+
+    return { theme, toggleTheme };
+  },
 });
 </script>
 
@@ -31,8 +49,8 @@ export default defineComponent({
     align-items: center;
     justify-content: space-between;
     width: 200px;
-    @include theme(color, color(tertiary, -3), color(quaternary, 2));
-    @include theme(background-color, color(quaternary, 2), color(tertiary, -3));
+    color: color(text);
+    background-color: color(background);
   }
 
   .sidebar__logo {
@@ -40,7 +58,7 @@ export default defineComponent({
     height: 60px;
     animation: rotate 5s linear infinite;
     border-radius: 48% 51% 49% 52%;
-    @include theme(background-color, color(tertiary, -3), color(quaternary, 2));
+    background-color: color(text);
   }
 
   .sidebar__section {
@@ -53,6 +71,14 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: center;
-    max-height: 140px;
+    flex: 0 0 140px;
+  }
+
+  .sidebar__section--bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex: 1 1 140px;
+    opacity: 0.4;
   }
 </style>

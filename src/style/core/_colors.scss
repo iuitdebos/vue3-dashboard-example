@@ -4,6 +4,8 @@ Usage examples:
   color(tertiary, -2) ==> var(--colorTertiaryDarken2)
   color(serious, dark) ==> var(--colorSeriousDark)
   color(classification, TopSecretSCI) ==> var(--colorClassificationTopSecretSCI)
+Also see _theme.scss for:
+  color(text) and color(background) for instance
 */
 
 @function color($color, $variant: '') {
