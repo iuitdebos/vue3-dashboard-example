@@ -1,3 +1,5 @@
+@import './utils/strings';
+
 @import './core/normalize';
 @import './core/settings';
 @import './core/svg';
@@ -5,6 +7,12 @@
 @import './core/typography';
 @import './core/theme';
 
-html {
-  background: red;
+
+body {
+  font-family: var(--font);
+}
+
+.app-container {
+  @include theme('color', color(primary), color(tertiary));
+  @include theme('background-color', color(tertiary), color(primary));
 }

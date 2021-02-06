@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class='app-container'>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -25,11 +25,7 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  border: 4px solid green;
-
-  .home {
-    border: 4px solid blue;
-  }
+html {
+  //
 }
 </style>
