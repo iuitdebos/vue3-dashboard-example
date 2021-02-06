@@ -2,17 +2,22 @@
 
 @import './core/normalize';
 @import './core/settings';
+@import './core/animations';
 @import './core/svg';
 @import './core/colors';
 @import './core/typography';
 @import './core/theme';
 
+html { box-sizing: border-box; }
+*, *::before, *::after {
+  box-sizing: inherit;
+}
 
 body {
   font-family: var(--font);
+  min-height: 100vh;
 }
 
-.app-container {
-  @include theme('color', color(primary), color(tertiary));
-  @include theme('background-color', color(tertiary), color(primary));
+a {
+  color: inherit;
 }

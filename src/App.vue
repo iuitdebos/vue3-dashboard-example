@@ -1,18 +1,20 @@
 <template>
   <div class='app-container'>
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Sidebar />
     <router-view/>
   </div>
 </template>
 
 <script>
+import Sidebar from '@/components/Sidebar.vue';
+
 import { onMounted, onUnmounted } from 'vue';
 
 export default {
   name: 'App',
+  components: {
+    Sidebar,
+  },
   setup: () => {
     onMounted(() => {
       document.body.classList.add('dark-theme');
@@ -25,7 +27,10 @@ export default {
 </script>
 
 <style lang="scss">
-html {
-  //
+html { /* import global index.scss */ }
+
+.app-container {
+  display: flex;
+  height: 100vh;
 }
 </style>

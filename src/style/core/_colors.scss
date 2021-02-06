@@ -1,6 +1,29 @@
+/*
+Usage examples:
+  color(primary) ==> --var(--colorPrimary)
+  color(tertiary, -2) ==> var(--colorTertiaryDarken2)
+  color(serious, dark) ==> var(--colorSeriousDark)
+  color(classification, TopSecretSCI) ==> var(--colorClassificationTopSecretSCI)
+*/
+
 @function color($color, $variant: '') {
-  @return var(--color#{capitalize($color)}#{capitalize($variant)});
+  $_variant: $variant;
+  @if (type-of($variant) == 'number') {
+    $_variant: map-get($variantMap, $variant);
+  }
+  @return var(--color#{capitalize($color)}#{capitalize($_variant)});
 }
+
+$variantMap: (
+  -4: 'Darken4',
+  -3: 'Darken3',
+  -2: 'Darken2',
+  -1: 'Darken1',
+  1: 'Lighten1',
+  2: 'Lighten2',
+  3: 'Lighten3',
+  4: 'Lighten4',
+);
 
 :root {
   // Customized from Astro UXDS
@@ -9,19 +32,19 @@
   --colorWhite: rgb(255, 255, 255);
   --colorGray: rgb(204, 204, 204);
 
-  --colorPrimary: rgb(0, 90, 143);
-  --colorSecondary: rgb(77, 172, 255);
-  --colorTertiary: rgb(40, 63, 88);
-  --colorQuaternary: rgb(207, 214, 227);
+  --colorPrimary: rgb(0, 90, 143); // Interface elements in their default state.
+  --colorSecondary: rgb(77, 172, 255); // Accents / active / hover states of interface elements.
+  --colorTertiary: rgb(40, 63, 88); // Dark-themed container elements.
+  --colorQuaternary: rgb(207, 214, 227); // Light-themed container elements.
 
-  --colorCriticalDark: rgb(255, 56, 56);
-  --colorSeriousDark: rgb(255, 179, 0);
-  --colorCautionDark: rgb(252, 232, 58);
-  --colorNormalDark: rgb(86, 240, 0);
-  --colorStandbyDark: rgb(45, 204, 255);
-  --colorOffDark: rgb(158, 167, 173);
+  --colorCriticalDark: rgb(255, 56, 56); // Critical, alert, emergency, urgent
+  --colorSeriousDark: rgb(255, 179, 0); // Serious, error, warning, needs attention
+  --colorCautionDark: rgb(252, 232, 58); // Caution, unstable, unsatisfactory
+  --colorNormalDark: rgb(86, 240, 0); // Normal, on, ok, fine, go, satisfactory
+  --colorStandbyDark: rgb(45, 204, 255); // Standby, available, enabled
+  --colorOffDark: rgb(158, 167, 173); // Off, unavailable, disabled
 
-  --colorCritical: rgb(255, 42, 4);
+  --colorCritical: rgb(255, 42, 4); // Same as above, but "Light" theme
   --colorSerious: rgb(255, 175, 61);
   --colorCaution: rgb(250, 216, 0);
   --colorNormal: rgb(0, 226, 0);
@@ -35,6 +58,7 @@
   --colorClassificationControlled: rgba(80,43,133);
   --colorClassificationUnclassified: rgba(0,122,51);
 
+  // Non-Status colors are designated for user interface elements that require distinct colors, but colors that do not conflict with status.
   --colorTag1: rgb(25, 199, 202);
   --colorTag2: rgb(120, 112, 208);
   --colorTag3: rgb(160, 13, 190);

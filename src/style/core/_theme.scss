@@ -1,4 +1,8 @@
-@mixin theme($var, $light, $dark, $root: '') {
+@mixin theme($var, $light, $dark: '', $root: '') {
+  @if ($dark == '') {
+    $dark: $light;
+  }
+
   #{$root} & {
     #{$var}: $light;
   }
