@@ -19,8 +19,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
-import { useStore } from '@/store';
+import { defineComponent } from 'vue';
+import useTheme from '@/composables/useTheme';
 
 import SidebarNav from '@/components/SidebarNav.vue';
 
@@ -30,14 +30,8 @@ export default defineComponent({
     SidebarNav,
   },
   setup() {
-    const store = useStore();
-    const theme = computed(() => store.state.App.theme);
-    const toggleTheme = () => {
-      const newTheme = theme.value === 'light' ? 'dark' : 'light';
-      store.commit('App/setTheme', newTheme);
-    };
-
-    return { theme, toggleTheme };
+    const theme = useTheme();
+    return { ...theme };
   },
 });
 </script>

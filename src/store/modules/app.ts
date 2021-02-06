@@ -1,4 +1,5 @@
 // Has some 'any' because this is not production code
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export default {
   namespaced: true,
