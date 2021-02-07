@@ -3,11 +3,13 @@
 @import './core/normalize';
 @import './core/settings';
 @import './core/animations';
-@import './core/svg';
 @import './core/colors';
 @import './core/theme';
 @import './core/shadows';
 @import './core/typography';
+
+@import './elements/svg';
+@import './elements/pip';
 
 html { box-sizing: border-box; }
 *, *::before, *::after {
@@ -26,6 +28,10 @@ a {
 
 .clickable {
   cursor: pointer;
+}
+
+.row {
+  display: flex;
 }
 
 // Scrollbar customization

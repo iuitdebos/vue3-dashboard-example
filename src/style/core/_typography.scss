@@ -2,12 +2,39 @@
   --font: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   --fontMono: "Roboto Mono", monospace;
   --fontSize: 1rem; /* 16px */
-  --fontSizeXL: 1.125rem;
-  --fontSizeLG: 1rem;
+  --fontSizeXL: 1.25rem;
+  --fontSizeLG: 1.125rem;
   --fontSizeMD: 0.875rem;
   --fontSizeSM: 0.75rem;
   --fontSizeXS: 0.65rem;
 }
+
+h1,
+.h1 {
+	font-size: var(--fontSizeXL);
+	font-weight: bold;
+}
+
+h2,
+.h2 {
+	font-size: var(--fontSizeLG);
+	font-weight: bold;
+}
+
+h3,
+.h3 {
+	font-size: var(--fontSize);
+	font-weight: bold;
+}
+
+h4,
+.h4 {
+	font-size: var(--fontSizeMD);
+	font-weight: bold;
+}
+
+p:first-child { margin-top: 0; }
+p:last-child { margin-bottom: 0; }
 
 $fontBase: '/static/fonts/';
 

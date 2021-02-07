@@ -33,7 +33,7 @@ export default defineComponent({
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 200px;
+    flex: 0 0 180px;
     background-color: color(background);
     box-shadow: shadow();
   }

@@ -28,11 +28,13 @@ html { /* import global index.scss */ }
   display: flex;
   height: 100vh;
   color: color(text);
+  overflow: hidden;
 }
 
 .page-container {
   flex: 1 1 auto;
   padding: var(--padding);
   background-color: color(background, deep);
+  overflow: auto;
 }
 </style>

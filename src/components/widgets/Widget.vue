@@ -14,6 +14,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
   .widget {
+    margin: 0 var(--padding) var(--padding) 0;
     padding: var(--padding);
     background-color: color(background);
     box-shadow: shadow(soft);

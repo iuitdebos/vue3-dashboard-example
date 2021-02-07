@@ -4,6 +4,7 @@
       <v-grid
         ref='revogrid'
         theme='material'
+        :readonly='true'
         :resize='false'
         :source="rows"
         :columns="columns"/>
@@ -22,51 +23,19 @@ export default defineComponent({
     Widget,
     VGrid,
   },
-  setup() {
+  props: {
+    rows: {
+      type: Object,
+      required: true,
+    },
+    columns: {
+      type: Object,
+      required: true,
+    },
+  },
+  setup(props) {
     return {
-      columns: [{
-        prop: 'name',
-        name: 'First',
-      }, {
-        prop: 'details',
-        name: 'Second',
-      }, {
-        prop: 'a',
-        name: 'a',
-      }, {
-        prop: 'b',
-        name: 'b',
-      }, {
-        prop: 'c',
-        name: 'c',
-      }, {
-        prop: 'd',
-        name: 'd',
-      }, {
-        prop: 'e',
-        name: 'e',
-      }, {
-        prop: 'f',
-        name: 'f',
-      }, {
-        prop: 'g',
-        name: 'g',
-      }, {
-        prop: 'h',
-        name: 'h',
-      }],
-      rows: [{
-        name: '1',
-        details: 'Item 1',
-        a: 'hallo hallo',
-        b: 'hallo hallo',
-        c: 'hallo halgagarg aergjaer gkajer gaerijg eairj giaje rigj lo',
-        d: 'hallo hallo',
-        e: 'hallo hallo',
-        f: 'hallo hallo',
-        g: 'hallo hallo',
-        h: 'hallo hallo',
-      }],
+      ...props,
     };
   },
 });
@@ -74,7 +43,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
   .table-widget {
-    width: 500px;
+    width: 1030px;
     height: 300px;
   }
 </style>
@@ -83,6 +52,27 @@ export default defineComponent({
   // Custom overrides for their default theme
   revo-grid[theme=material] revogr-data .data-cell {
     color: inherit !important;
+  }
+  revo-grid[theme=material] revogr-data .row.focused-row {
+    @include theme(background-color, color(secondary, 4), color(secondary, -3));
+  }
+  revogr-focus.focused-cell,
+  revogr-overlay-selection .selection-border-range {
+    @include theme(box-shadow, inset 0 0 1px 1px color(secondary, 2), inset 0 0 1px 1px color(secondary, -1));
+  }
+  revo-grid[theme=material] revogr-viewport-scroll.colPinStart,
+  revo-grid[theme=material] revogr-header .header-row:not(.group),
+  revo-grid[theme=material] revogr-data .row {
+    @include theme(box-shadow, inset -1px -1px 0 0 color(quaternary, 3), inset -1px -1px 0 0 color(tertiary, -2))
+  }
+  revo-grid[theme=material] revogr-header .data-header-cell.focused-cell {
+    background: none;
+  }
+  revo-grid[theme=material] revogr-header .data-header-cell.sortable {
+    transition: background-color 0.1s;
+    &:hover {
+      @include theme(background-color, color(quaternary, 3), color(tertiary));
+    }
   }
   // Bug fix
   revogr-header .data-header-cell>.resizable-r.no-resize {

@@ -16,5 +16,12 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/experimental-script-setup-vars': 'off',
     'no-underscore-dangle': 'off',
+    'max-len': [
+      'warn',
+      {
+        'code': 120,
+        'ignoreTrailingComments': true,
+      },
+    ],
   },
 };
