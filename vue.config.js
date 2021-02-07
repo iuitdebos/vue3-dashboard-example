@@ -2,6 +2,9 @@
 const path = require('path');
 
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/vue3-dashboard-example/'
+    : '/',
   css: {
     loaderOptions: {
       sass: {
