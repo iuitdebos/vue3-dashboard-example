@@ -1,6 +1,10 @@
-# vue3
+# Vue3 Dashboard Example
+
+See it live straight away: [https://iuitdebos.github.io/vue3-dashboard-example/](iuitdebos.github.io/vue3-dashboard-example), or to build your own, run `yarn install` and `yarn serve` to get a `localhost:8080` running.
 
 ## Project setup
+Any `yarn` could be replaced by `npm` if yarn is not installed.
+
 ```
 yarn install
 ```
@@ -19,6 +23,3 @@ yarn build
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
