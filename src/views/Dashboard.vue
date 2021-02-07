@@ -206,38 +206,38 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .dashboard {
     display: flex;
     flex-wrap: wrap;
-  }
 
-  .row {
-    max-width: 1050px;
-  }
-
-  .text {
-    width: 1030px;
-
-    .h2 {
-      display: inline-block;
-      margin-top: 0;
-      margin-right: 10px;
-      text-transform: uppercase;
+    .row {
+      max-width: 1050px;
     }
 
-    p {
-      margin-top: 0;
-    }
+    .text {
+      width: 1030px;
 
-    .entry-data {
-      margin-right: 10px;
-      font-weight: bold;
-    }
+      .h2 {
+        display: inline-block;
+        margin-top: 0;
+        margin-right: 10px;
+        text-transform: uppercase;
+      }
 
-    .text-detail {
-      color: color(text, detail);
-      font-weight: normal;
+      p {
+        margin-top: 0;
+      }
+
+      .entry-data {
+        margin-right: 10px;
+        font-weight: bold;
+      }
+
+      .text-detail {
+        color: color(text, detail);
+        font-weight: normal;
+      }
     }
   }
 </style>

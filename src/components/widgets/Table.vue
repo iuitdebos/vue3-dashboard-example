@@ -41,14 +41,12 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .table-widget {
     width: 1030px;
     height: 300px;
   }
-</style>
 
-<style lang="scss">
   // Custom overrides for their default theme
   revo-grid[theme=material] revogr-data .data-cell {
     color: inherit !important;

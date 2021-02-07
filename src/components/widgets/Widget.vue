@@ -12,7 +12,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .widget {
     margin: 0 var(--padding) var(--padding) 0;
     padding: var(--padding);

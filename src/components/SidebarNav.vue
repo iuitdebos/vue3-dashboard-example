@@ -25,7 +25,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .sidebar-nav {
     display: flex;
     flex-direction: column;

@@ -49,44 +49,42 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .chart-widget {
     width: 500px;
     height: 300px;
   }
-</style>
 
-<style lang="scss">
   .vue-apexcharts {
     svg {
       text {
-        fill: color(text);
+        fill: color(text) !important;
       }
     }
   }
 
   .apexcharts-xaxistooltip {
-    border: 0;
-    box-shadow: shadow();
-    color: color(text);
-    @include theme(background-color, color(quaternary, 3), color(tertiary, 1));
+    border: 0 !important;
+    box-shadow: shadow() !important;
+    color: color(text) !important;
+    @include theme(background-color, color(quaternary, 3) !important, color(tertiary, 1) !important);
 
     &-bottom::before {
-      @include theme(border-bottom-color, color(quaternary, 4), color(tertiary, 2));
+      @include theme(border-bottom-color, color(quaternary, 4) !important, color(tertiary, 2) !important);
     }
     &-bottom::after {
-      @include theme(border-bottom-color, color(quaternary, 3), color(tertiary, 1));
+      @include theme(border-bottom-color, color(quaternary, 3) !important, color(tertiary, 1) !important);
     }
   }
 
   .apexcharts-tooltip {
-    border: 0;
-    box-shadow: shadow();
-    @include theme(background-color, color(quaternary, 3), color(tertiary, 1));
+    border: 0 !important;
+    box-shadow: shadow() !important;
+    @include theme(background-color, color(quaternary, 3) !important, color(tertiary, 1) !important);
 
     .apexcharts-tooltip-title {
-      border: 0;
-      @include theme(background-color, color(quaternary, 4), color(tertiary, 2));
+      border: 0 !important;
+      @include theme(background-color, color(quaternary, 4) !important, color(tertiary, 2) !important);
     }
   }
 </style>
