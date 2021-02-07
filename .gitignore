@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
-/dist
 
+# Need /dist for git pages auto publishing
+# /dist
 
 # local env files
 .env.local
