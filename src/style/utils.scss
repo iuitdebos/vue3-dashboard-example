@@ -1,0 +1,8 @@
+// Only add definitions here, as 'utils.scss' gets added to each component.
+// This allows you to use mixins and global variables in .vue files, but would duplicate any CSS declarations.
+
+@import './utils/colors';
+@import './utils/shadows';
+@import './utils/strings';
+@import './utils/theme';
+@import './utils/typography';

@@ -1,0 +1,8 @@
+/* Usage
+box-shadow: shadow();
+box-shadow: shadow(strong);
+*/
+
+@function shadow($strength: '') {
+  @return 0 3px 7px -1px var(--shadow#{capitalize($strength)});
+}

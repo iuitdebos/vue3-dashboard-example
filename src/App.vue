@@ -22,6 +22,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/style/index.scss';
+
 html { /* import global index.scss */ }
 
 .app-container {

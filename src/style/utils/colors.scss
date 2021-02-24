@@ -1,0 +1,28 @@
+/*
+Usage examples:
+  color(primary) ==> --var(--colorPrimary)
+  color(tertiary, -2) ==> var(--colorTertiaryDarken2)
+  color(serious, dark) ==> var(--colorSeriousDark)
+  color(classification, TopSecretSCI) ==> var(--colorClassificationTopSecretSCI)
+Also see _theme.scss for:
+  color(text) and color(background) for instance
+*/
+
+$colorVariantMap: (
+  -4: 'Darken4',
+  -3: 'Darken3',
+  -2: 'Darken2',
+  -1: 'Darken1',
+  1: 'Lighten1',
+  2: 'Lighten2',
+  3: 'Lighten3',
+  4: 'Lighten4',
+);
+
+@function color($color, $variant: '') {
+  $_variant: $variant;
+  @if (type-of($variant) == 'number') {
+    $_variant: map-get($colorVariantMap, $variant);
+  }
+  @return var(--color#{capitalize($color)}#{capitalize($_variant)});
+}

@@ -23,5 +23,7 @@ module.exports = {
         'ignoreTrailingComments': true,
       },
     ],
+    'new-cap': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };

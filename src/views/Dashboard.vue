@@ -23,9 +23,9 @@
         :series='charts.md.series'
         :options='charts.md.options' />
 
-      <Chart
-        :series='charts.pc.series'
-        :options='charts.pc.options' />
+      <UChart
+        :series='charts.md.series'
+        :options='charts.md.options' />
     </div>
 
     <div class='row'>
@@ -41,6 +41,7 @@ import { defineComponent } from 'vue';
 import { DateTime } from 'luxon';
 import Table from '@/components/widgets/Table.vue';
 import Chart from '@/components/widgets/Chart.vue';
+import UChart from '@/components/widgets/UChart.vue';
 import Widget from '@/components/widgets/Widget.vue';
 import useCdmData from '@/composables/useCdmData';
 
@@ -75,6 +76,7 @@ export default defineComponent({
   components: {
     Table,
     Chart,
+    UChart,
     Widget,
   },
   setup() {

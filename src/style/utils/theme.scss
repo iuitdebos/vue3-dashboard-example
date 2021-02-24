@@ -1,0 +1,41 @@
+/* Usage
+@include theme(background-color, color(primary), color(secondary));
+*/
+
+@mixin theme($var, $light, $dark: '', $root: '') {
+  $isCssVar: str-slice($var, 1, 2) == '--';
+
+  @if ($dark == '') {
+    $dark: $light;
+  }
+
+  #{$root} & {
+    #{$var}: $light;
+    @if ($isCssVar) {
+      #{$var}-inv: $dark;
+    }
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    #{$root} & {
+      #{$var}: $dark;
+      @if ($isCssVar) {
+        #{$var}-inv: $light;
+      }
+    }
+  }
+
+  // Force for non-body elements overrides
+  #{$root}.light-theme & {
+    #{$var}: $light;
+    @if ($isCssVar) { #{$var}-inv: $dark; }
+  }
+
+  #{$root}.dark-theme & {
+    #{$var}: $dark;
+    @if ($isCssVar) { #{$var}-inv: $light; }
+  }
+}
+@function inv($var) {
+  @return str-slice($var, 1, -2) + "-inv)";
+}
