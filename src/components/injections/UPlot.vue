@@ -1,17 +1,20 @@
 <template>
-  <div ref='chartContainer'></div>
+  <div
+    ref='uplotContainer'
+    class='uplot-container'></div>
 </template>
 
 <script lang="ts">
 import {
   defineComponent,
   onMounted,
+  onBeforeUnmount,
   ref,
 } from 'vue';
 import uPlot from 'uplot';
 
 export default defineComponent({
-  name: 'Wrappers/UPlot',
+  name: 'Injections/UPlot',
   props: {
     type: {
       type: String,
@@ -31,8 +34,8 @@ export default defineComponent({
         title: 'My Chart',
         id: 'chart1',
         class: 'my-chart',
-        width: 800,
-        height: 600,
+        width: 100,
+        height: 100,
         series: [
           {},
           {
@@ -56,29 +59,46 @@ export default defineComponent({
     },
   },
   setup(props: any) {
-    const uplotContainer = ref(null);
-    const uplot = ref();
+    const uplotContainer = ref() as any;
+    const uplot = ref() as any;
 
-    // Before the component is mounted, the value
-    // of the ref is `null` which is the default
-    // value we've specified above.
+    function resize(width = 0, height = 0) {
+      if (width !== 0 || height !== 0) {
+        uplot.value.setSize({ width, height });
+      } else {
+        const uplotContainerBounds = uplotContainer.value.getBoundingClientRect();
+        uplot.value.setSize({ width: uplotContainerBounds.width, height: uplotContainerBounds.height });
+      }
+    }
+    const resizeHandler = () => { resize(); };
+
+    //
     onMounted(() => {
       uplot.value = new uPlot(props.options, props.data as uPlot.AlignedData, uplotContainer.value as any);
-      console.log(uplot.value, uplotContainer.value);
+
+      resize();
+      window.addEventListener('resize', resizeHandler);
+    });
+
+    //
+    onBeforeUnmount(() => {
+      uplot.value.destroy();
+      window.removeEventListener('resize', resizeHandler);
     });
 
     return {
       ...props,
       uplotContainer,
       uplot,
+      resize,
     };
   },
 });
 </script>
 
 <style lang="scss">
-  .chart-widget {
-    width: 500px;
-    height: 300px;
-  }
+.uplot-container {
+  position: relative;
+  max-height: 100%;
+}
 </style>

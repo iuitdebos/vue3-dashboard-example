@@ -24,8 +24,6 @@ export default {
 <style lang="scss">
 @import '@/style/index.scss';
 
-html { /* import global index.scss */ }
-
 .app-container {
   display: flex;
   height: 100vh;

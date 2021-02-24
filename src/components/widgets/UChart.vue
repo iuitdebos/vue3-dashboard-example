@@ -10,10 +10,8 @@
 <script lang="ts">
 import {
   defineComponent,
-  onMounted,
-  ref,
 } from 'vue';
-import UPlot from '@/components/wrappers/UPlot.vue';
+import UPlot from '@/components/injections/UPlot.vue';
 import Widget from '@/components/widgets/Widget.vue';
 
 export default defineComponent({

@@ -8,7 +8,7 @@
             <span class='text-detail'>{{ latestEntry.chaserName }} &ndash; by {{ latestEntry.originator }}</span>
           </p>
           <p>
-            <span class='entry-data pip'>{{ latestEntry.pc }}</span>
+            <span class='entry-data badge'>{{ latestEntry.pc }}</span>
             <span class='text-detail'>at &nbsp;</span>
             <span class='entry-data'>{{ latestTcaReadable }}</span>
             <span class='text-detail'>at a distance of &nbsp;</span>

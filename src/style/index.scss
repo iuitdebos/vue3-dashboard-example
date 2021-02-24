@@ -9,7 +9,9 @@
 @import './core/typography';
 
 @import './elements/svg';
-@import './elements/pip';
+@import './elements/badge';
+
+@import './vendor/uplot';
 
 html { box-sizing: border-box; }
 *, *::before, *::after {
