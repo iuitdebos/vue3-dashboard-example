@@ -2,6 +2,7 @@
   <Widget>
     <div class='chart-widget'>
       <UPlot
+        ref='chart'
         :data='data'
         :options='opts' />
     </div>
@@ -12,9 +13,10 @@
 import {
   ref,
   defineComponent,
+  onMounted,
 } from 'vue';
 import useTooltips from '@/composables/vendor/uplot/useTooltips';
-import UPlot from '@/components/injections/UPlot.vue';
+import UPlot from '@/components/vendor/UPlot.vue';
 import Widget from '@/components/widgets/Widget.vue';
 
 const defaultOptions = {
@@ -44,10 +46,20 @@ export default defineComponent({
   },
   setup(props) {
     const options = ref({ ...defaultOptions, ...props.options });
+    const chart = ref();
+
+    //
+    onMounted(() => {
+      const ctx = chart.value.exportAs.svg();
+      ctx.fillStyle = 'red';
+      ctx.fillRect(100, 100, 100, 100);
+      console.log(ctx.getSerializedSvg());
+    });
 
     return {
       ...props,
       opts: options,
+      chart,
     };
   },
 });

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 export default function useTooltips(pluginOpts?: any) {
   function init(u: any, opts: any) {
     const plot = u.root.querySelector('.u-over');
