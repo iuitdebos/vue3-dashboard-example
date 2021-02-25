@@ -25,5 +25,7 @@ module.exports = {
     ],
     'new-cap': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    'no-param-reassign': 'off',
+    'no-multi-assign': 'off',
   },
 };

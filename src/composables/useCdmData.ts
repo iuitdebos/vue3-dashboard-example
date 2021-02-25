@@ -9,6 +9,7 @@ export default function useCdmData() {
     _id: d._id,
     originator: d.originator,
     creationDate: d.creationDate,
+    creationDateAsUnixTimestamp: new Date(d.creationDate).valueOf() / 1000,
     targetName: d.targetObject.name,
     targetNoradId: d.targetObject.noradId,
     chaserName: d.chaserObject.name,

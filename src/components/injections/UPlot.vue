@@ -31,19 +31,11 @@ export default defineComponent({
     options: {
       type: Object,
       default: () => ({
-        title: 'My Chart',
-        id: 'chart1',
-        class: 'my-chart',
         width: 100,
         height: 100,
         series: [
-          {},
+          {}, // x-axis
           {
-          // initial toggled state (optional)
-            show: true,
-
-            spanGaps: false,
-
             // in-legend display
             label: 'RAM',
             value: (self, rawValue) => `$${rawValue.toFixed(2)}`,
@@ -51,8 +43,13 @@ export default defineComponent({
             // series style
             stroke: 'red',
             width: 1,
-            fill: 'rgba(255, 0, 0, 0.3)',
-            dash: [10, 5],
+            fill: 'rgba(255, 0, 0, 0.1)',
+          },
+          {
+            // series style
+            stroke: 'blue',
+            width: 1,
+            fill: 'rgba(0, 0, 255, 0.1)',
           },
         ],
       }),
@@ -99,6 +96,7 @@ export default defineComponent({
 <style lang="scss">
 .uplot-container {
   position: relative;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
 }
 </style>

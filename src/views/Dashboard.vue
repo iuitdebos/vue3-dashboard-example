@@ -20,11 +20,11 @@
 
     <div class='row'>
       <Chart
-        :series='charts.md.series'
-        :options='charts.md.options' />
+        :series='charts.mdOld.series'
+        :options='charts.mdOld.options' />
 
-      <UChart
-        :series='charts.md.series'
+      <LineChart
+        :data='charts.md.series'
         :options='charts.md.options' />
     </div>
 
@@ -41,7 +41,7 @@ import { defineComponent } from 'vue';
 import { DateTime } from 'luxon';
 import Table from '@/components/widgets/Table.vue';
 import Chart from '@/components/widgets/Chart.vue';
-import UChart from '@/components/widgets/UChart.vue';
+import LineChart from '@/components/widgets/LineChart.vue';
 import Widget from '@/components/widgets/Widget.vue';
 import useCdmData from '@/composables/useCdmData';
 
@@ -76,28 +76,47 @@ export default defineComponent({
   components: {
     Table,
     Chart,
-    UChart,
+    LineChart,
     Widget,
   },
   setup() {
     const cdm = useCdmData();
     const cdmFlat = cdm.flatData.value;
 
-    const series = {
+    const seriesOld = {
       md: [{ name: 'Miss Distance (m)', data: new Array(cdmFlat.length) }],
       pc: [{ name: 'Probability of Collision', data: new Array(cdmFlat.length) }],
       tca: [{ name: 'Closest Approach', data: new Array(cdmFlat.length) }],
     };
-    const seriesKeys = Object.keys(series);
+    const seriesOldKeys = Object.keys(seriesOld);
 
     cdmFlat.forEach((entry, i) => {
-      seriesKeys.forEach((set) => {
-        series[set][0].data[i] = {
+      seriesOldKeys.forEach((set) => {
+        seriesOld[set][0].data[i] = {
           x: entry.creationDate,
           y: entry[set],
         };
       });
     });
+
+    const cdmChartData = {
+      md: [new Array(cdmFlat.length), new Array(cdmFlat.length)],
+    };
+    const cdmChartDataKeys = Object.keys(cdmChartData);
+
+    cdmFlat.forEach((entry, i) => {
+      cdmChartDataKeys.forEach((key) => {
+        cdmChartData[key][0][i] = entry.creationDateAsUnixTimestamp;
+        cdmChartData[key][1][i] = entry[key];
+      });
+    });
+    /*
+      [
+        [1546300800, 1546387200], // x-values (timestamps)
+        [35, 71], // y-values (series 1)
+        [90, 15], // y-values (series 2)
+      ]
+    */
 
     const latestEntry = cdmFlat[0];
     const dt = DateTime.fromISO(latestEntry.tca).toUTC();
@@ -158,8 +177,8 @@ export default defineComponent({
         rows: cdm.flatData.value,
       },
       charts: {
-        md: {
-          series: series.md,
+        mdOld: {
+          series: seriesOld.md,
           options: {
             ...commonChartOptions,
             chart: {
@@ -176,30 +195,22 @@ export default defineComponent({
             },
           },
         },
-        pc: {
-          series: series.pc,
+        md: {
+          series: cdmChartData.md,
           options: {
-            ...commonChartOptions,
-            chart: {
-              ...commonChartOptions.chart,
-              id: 'pc',
-            },
-            title: {
-              text: 'Probability of Collision',
-            },
-            yaxis: {
-              title: {
-                text: '',
+            series: [
+              {}, // x-axis
+              {
+              // in-legend display
+                label: 'Miss Distance',
+                value: (self, rawValue) => `${rawValue.toFixed(2)}m`,
+
+                // series style
+                stroke: 'red',
+                width: 1,
+                fill: 'rgba(255, 0, 0, 0.1)',
               },
-            },
-            tooltip: {
-              shared: false,
-              y: {
-                formatter(val) {
-                  return val.toExponential();
-                },
-              },
-            },
+            ],
           },
         },
       },
