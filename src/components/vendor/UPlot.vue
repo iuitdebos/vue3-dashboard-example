@@ -12,7 +12,6 @@ import {
   ref,
 } from 'vue';
 import uPlot from 'uplot';
-import exportAsSvg from '@/composables/vendor/uplot/exportAsSvg';
 import useResizeListener from '@/composables/useResizeListener';
 
 export default defineComponent({
@@ -31,6 +30,8 @@ export default defineComponent({
     const uplotContainer = ref() as any;
     const uplot = ref() as any;
 
+    const can = ref() as any;
+
     // SVG Export support
     const exportAs = ref({});
 
@@ -38,9 +39,50 @@ export default defineComponent({
     onMounted(() => {
       uplot.value = new uPlot(props.options, props.data as uPlot.AlignedData, uplotContainer.value as any);
 
-      exportAs.value = {
-        svg: exportAsSvg(uplot.value),
-      };
+      // const svgCtx = exportAsSvg(uplot.value)({ width: 500, height: 300 });
+      // const svgPlot = new uPlot({
+      //   ...props?.options,
+      //   hooks: {
+      //     ...props?.options?.hooks,
+      //     draw: [
+      //       (up: any) => {
+      //         const el = document.getElementById('hallo');
+      //         if (el) {
+      //           // el.innerHTML = up.ctx.getSerializedSvg();
+      //         }
+      //         // console.log(up.ctx.getSerializedSvg());
+      //       }],
+      //   },
+      // }, props.data as uPlot.AlignedData, uplotContainer.value as any, svgCtx);
+      // svgPlot.setSize({ width: 500, height: 300 });
+      // svgPlot.syncRect();
+
+      // svgCtx.beginPath();
+      // svgCtx.moveTo(0, 0);
+      // svgCtx.lineTo(100, 0);
+      // svgCtx.lineTo(100, 100);
+      // svgCtx.strokeStyle = 'green';
+      // svgCtx.stroke();
+
+      // const path2 = new Path2D();
+      // path2.moveTo(220, 60);
+      // path2.arc(170, 60, 50, 0, 2 * Math.PI);
+      // console.log(path2);
+      // svgCtx.stroke(path2);
+
+      // console.log(svgCtx.getSerializedSvg());
+
+      // svgPlot.redraw(true, true);
+
+      // uplot.value.ctx = ctx;
+      // uplot.value.setSize({ width: 500, height: 300 });
+      // uplot.value.redraw(true);
+      // uplot.value.syncRect();
+      // console.log(uplot.value, can.value, ctx);
+
+      // exportAs.value = {
+      //   svg: exportAsSvg(svgPlot),
+      // };
     });
 
     //
@@ -62,6 +104,7 @@ export default defineComponent({
       ...props,
       uplotContainer,
       uplot,
+      can,
       resize,
       exportAs,
     };

@@ -1,4 +1,4 @@
-import * as C2S from '@/composables/vendor/canvas2svg/canvas2svg';
+import * as C2S from '@/composables/vendor/canvas2svg/murkle.canvas2svg';
 
 type svgExportOptions = {
   width?: number;
@@ -28,7 +28,6 @@ var svg = ctx.getSvg();
     const height = opts.height || 480;
 
     const ctx = new C2S(width, height);
-    console.log(ctx);
 
     return ctx;
   };

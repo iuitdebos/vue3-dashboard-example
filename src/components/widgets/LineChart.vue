@@ -50,10 +50,10 @@ export default defineComponent({
 
     //
     onMounted(() => {
-      const ctx = chart.value.exportAs.svg();
-      ctx.fillStyle = 'red';
-      ctx.fillRect(100, 100, 100, 100);
-      console.log(ctx.getSerializedSvg());
+      // const ctx = chart.value.exportAs.svg();
+      // ctx.fillStyle = 'red';
+      // ctx.fillRect(100, 100, 100, 100);
+      // console.log(ctx.getSerializedSvg());
     });
 
     return {
